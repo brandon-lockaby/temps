@@ -14,6 +14,7 @@ app.whenReady().then(() => {
             contextIsolation: false,
         },
         frame: false,
+        alwaysOnTop: true,
         autoHideMenuBar: true,
         icon: './icon.png',
         x: windowState.x,
