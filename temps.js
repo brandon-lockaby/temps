@@ -8,7 +8,7 @@ let ctx = canvas.getContext('2d');
 
 const FONT_FAMILY = 'Roboto';
 
-const LOG_MAX = 6 * 300;
+const LOG_MAX = (1000 / 10) * 60 * 1;
 let log_entries = [];
 function log_add(sensors) {
     log_entries.push(sensors);
@@ -77,6 +77,12 @@ function right_aligned_text(text, font = FONT_FAMILY, x, y) {
 }
 
 function show_something(entries_per_view = LOG_MAX) {
+    let NICE_WIDTH = 500;
+    if(canvas.width < NICE_WIDTH) {
+        let scale = canvas.width / NICE_WIDTH;
+        entries_per_view *= scale * scale;
+    }
+    entries_per_view = Math.max(Math.floor(entries_per_view), 10);
     canvas_clear();
     background1();
     graphLines = {};
@@ -103,7 +109,7 @@ function show_something(entries_per_view = LOG_MAX) {
             }
         }
     }
-    ctx.lineWidth = Math.min(Math.max(canvas.width * 0.005, 0.5), 2);
+    ctx.lineWidth = Math.min(Math.max(Math.min(canvas.width, canvas.height) * 0.005, 0.5), 2);
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     Object.keys(graphLines).sort().forEach(key => {
