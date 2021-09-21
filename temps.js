@@ -40,11 +40,13 @@ function background1() {
     ctx.save();
     ctx.lineWidth = 0.5;
     ctx.setLineDash([canvas.width / 200, canvas.width / 200]);
-    line(90, '#ff0000'); // red
-    line(80, '#ff8000'); // orange
-    line(60, '#ffff00'); // yellow
-    line(40, '#008000'); // green
-    line(30, '#0000ff'); // blue
+    line(90, '#ff0000');
+    line(80, '#ff4000');
+    line(70, '#ffa000');
+    line(60, '#ffdd00');
+    line(50, '#20ff00');
+    line(40, '#00d0d0');
+    line(30, '#00d0ff');
     ctx.restore();
 }
 
